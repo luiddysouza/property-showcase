@@ -326,7 +326,7 @@ service cloud.firestore {
 | GitHub Actions | Gratuito (repo público) | 2.000 min/mês | ~5 min por push |
 | **Total** | | | **R$ 0,00** |
 
-> **Atenção com Unsplash:** Não use a API do Unsplash com chave. Use URLs diretas de imagens públicas no formato `https://images.unsplash.com/photo-[ID]?w=800` — isso não requer autenticação e não tem custo.
+> **Imagens mock:** O projeto usa `picsum.photos` para imagens de demonstração (ex: `https://picsum.photos/seed/apt-copa1/800/600`). URLs do Unsplash podem ser bloqueadas em emuladores sem autenticação.
 
 ---
 
@@ -476,7 +476,6 @@ test/
 - [ ] Golden PNGs estão commitados e atualizados
 - [ ] README tem screenshots reais das 3 telas
 - [ ] GitHub Actions está verde (badge no README)
-- [ ] Link para o APK no README está funcionando
 - [ ] Nenhuma key ou secret está exposto no repositório
 - [ ] `git log --oneline` mostra commits limpos e descritivos
 - [ ] Deep link `propshowcase://imovel/1` funciona no emulador Android

@@ -69,7 +69,7 @@ features/
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/seu-usuario/property-showcase.git
+git clone https://github.com/luiddysouza/property-showcase.git
 cd property-showcase
 
 # 2. Instale dependências
@@ -204,36 +204,19 @@ padding: EdgeInsets.all(16)
 
 ---
 
-## Contribuindo
+## Possíveis Evoluções
 
-1. Faça um fork
-2. Crie uma branch (`git checkout -b feature/NovaFuncionalidade`)
-3. Commit suas mudanças (`git commit -m 'feat: Nova funcionalidade'`)
-4. Push para a branch (`git push origin feature/NovaFuncionalidade`)
-5. Abra um Pull Request
+> Ideias de extensão para quem quiser aprofundar o estudo:
 
----
-
-## Próximos Passos
-
-- [ ] Integração com API real de imóveis
-- [ ] Autenticação com Firebase Auth
-- [ ] Armazenamento persistente (Hive/Isar)
-- [ ] Foto de perfil do usuário
-- [ ] Busca e filtros avançados
-- [ ] Favoritos e histórico
-- [ ] Notificações em real-time com Websocket
-- [ ] CI/CD com GitHub Actions
-- [ ] Deployment no Play Store / App Store
+- Integração com API real de imóveis
+- Autenticação com Firebase Auth
+- Armazenamento persistente com Hive ou Isar
+- Busca e filtros avançados
+- Favoritos e histórico de visualizações
+- Chat real com WebSocket ou Firebase Realtime Database
 
 ---
 
 ## Licença
 
 MIT © 2024
-
----
-
-## Suporte
-
-Para dúvidas ou sugestões, abra uma [issue](https://github.com/seu-usuario/property-showcase/issues).
