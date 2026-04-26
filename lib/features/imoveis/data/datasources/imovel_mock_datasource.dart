@@ -11,18 +11,21 @@ class ImovelMockDatasource {
         preco: 1500000.0,
         midias: [
           const MidiaModel(
-            url: 'https://images.unsplash.com/photo-1512917774080-9564f0042222?w=500&h=500&fit=crop',
+            url:
+                'https://images.unsplash.com/photo-1512917774080-9564f0042222?w=500&h=500&fit=crop',
             tipo: MidiaTipo.foto,
           ),
           const MidiaModel(
-            url: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500&h=500&fit=crop',
+            url:
+                'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500&h=500&fit=crop',
             tipo: MidiaTipo.foto,
           ),
         ],
         quartos: 3,
         banheiros: 2,
         areaM2: 150.0,
-        descricao: 'Apartamento com vista para o mar, acabamento premium e localização privilegiada.',
+        descricao:
+            'Apartamento com vista para o mar, acabamento premium e localização privilegiada.',
       ),
       ImovelModel(
         id: '2',
@@ -31,14 +34,16 @@ class ImovelMockDatasource {
         preco: 950000.0,
         midias: [
           const MidiaModel(
-            url: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500&h=500&fit=crop',
+            url:
+                'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500&h=500&fit=crop',
             tipo: MidiaTipo.foto,
           ),
         ],
         quartos: 4,
         banheiros: 3,
         areaM2: 220.0,
-        descricao: 'Casa com piscina, jardim amplo e garagem para 3 carros. Ideal para família.',
+        descricao:
+            'Casa com piscina, jardim amplo e garagem para 3 carros. Ideal para família.',
       ),
       ImovelModel(
         id: '3',
@@ -47,18 +52,21 @@ class ImovelMockDatasource {
         preco: 2200000.0,
         midias: [
           const MidiaModel(
-            url: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500&h=500&fit=crop',
+            url:
+                'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500&h=500&fit=crop',
             tipo: MidiaTipo.foto,
           ),
           const MidiaModel(
-            url: 'https://images.unsplash.com/photo-1494145904049-0dca59b4bbad?w=500&h=500&fit=crop',
+            url:
+                'https://images.unsplash.com/photo-1494145904049-0dca59b4bbad?w=500&h=500&fit=crop',
             tipo: MidiaTipo.foto,
           ),
         ],
         quartos: 5,
         banheiros: 4,
         areaM2: 380.0,
-        descricao: 'Penthouse com terraço panorâmico, sala de cinema e spa privativo.',
+        descricao:
+            'Penthouse com terraço panorâmico, sala de cinema e spa privativo.',
       ),
     ];
   }

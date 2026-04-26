@@ -7,13 +7,13 @@ import 'core/shared/services/notification_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // Inicializar Firebase
   await Firebase.initializeApp();
-  
+
   // Inicializar serviço de notificações
   await NotificationService.initialize();
-  
+
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -23,7 +23,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
-    
+
     return MaterialApp.router(
       title: 'Property Showcase',
       theme: AppTheme.light(),

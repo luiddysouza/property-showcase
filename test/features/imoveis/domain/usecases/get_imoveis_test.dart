@@ -18,8 +18,10 @@ void main() {
   group('GetImoveis', () {
     const mockImoveis = <Imovel>[];
 
-    test('deve retornar lista de imóveis quando o repositório conseguir', () async {
-      when(() => mockRepository.getImoveis()).thenAnswer((_) async => mockImoveis);
+    test('deve retornar lista de imóveis quando o repositório conseguir',
+        () async {
+      when(() => mockRepository.getImoveis())
+          .thenAnswer((_) async => mockImoveis);
 
       final result = await sut();
 

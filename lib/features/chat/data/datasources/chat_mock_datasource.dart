@@ -6,7 +6,8 @@ import '../models/message_model.dart';
 /// só o datasource muda, nada acima precisa saber.
 class ChatMockDatasource {
   final Map<String, List<MessageModel>> _mensagens = {};
-  final Map<String, StreamController<List<MessageModel>>> _streamControllers = {};
+  final Map<String, StreamController<List<MessageModel>>> _streamControllers =
+      {};
 
   Stream<List<MessageModel>> watchMessages(String conversationId) {
     // Inicializar conversa se não existir

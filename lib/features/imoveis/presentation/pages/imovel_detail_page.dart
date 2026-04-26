@@ -87,7 +87,8 @@ class _ImovelDetailContentState extends State<_ImovelDetailContent> {
                 children: [
                   GestureDetector(
                     onTap: () => context.pop(),
-                    child: const Icon(Icons.arrow_back, color: AppColors.textPrimary),
+                    child: const Icon(Icons.arrow_back,
+                        color: AppColors.textPrimary),
                   ),
                   const Spacer(),
                   Text(

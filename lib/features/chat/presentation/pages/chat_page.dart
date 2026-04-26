@@ -42,7 +42,8 @@ class _ChatPageState extends ConsumerState<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    final messagesAsync = ref.watch(messagesStreamProvider(widget.conversationId));
+    final messagesAsync =
+        ref.watch(messagesStreamProvider(widget.conversationId));
     final sendMessage = ref.read(sendMessageProvider);
 
     // Auto-scroll ao receber nova mensagem

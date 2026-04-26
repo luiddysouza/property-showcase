@@ -41,8 +41,8 @@ class ImovelCard extends StatelessWidget {
                 topRight: Radius.circular(12),
               ),
               child: CachedNetworkImage(
-                imageUrl: imovel.midias.isNotEmpty 
-                    ? imovel.midias.first.url 
+                imageUrl: imovel.midias.isNotEmpty
+                    ? imovel.midias.first.url
                     : 'https://via.placeholder.com/300x200',
                 height: 160,
                 width: double.infinity,

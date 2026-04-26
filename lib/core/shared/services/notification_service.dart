@@ -1,4 +1,5 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 /// Handler para notificações em background (deve ser top-level function)
@@ -18,7 +19,6 @@ class NotificationService {
       alert: true,
       announcement: true,
       badge: true,
-      carryforward: true,
       criticalAlert: true,
       provisional: true,
       sound: true,
@@ -28,7 +28,8 @@ class NotificationService {
     FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 
     // Configurar notificações locais
-    const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
+    const androidSettings =
+        AndroidInitializationSettings('@mipmap/ic_launcher');
     const iosSettings = DarwinInitializationSettings(
       requestAlertPermission: true,
       requestBadgePermission: true,
@@ -61,8 +62,8 @@ class NotificationService {
             AndroidFlutterLocalNotificationsPlugin>()
         ?.createNotificationChannel(
           const AndroidNotificationChannel(
-            id: 'high_importance_channel',
-            name: 'High Importance Notifications',
+            'high_importance_channel',
+            'High Importance Notifications',
             importance: Importance.max,
             enableVibration: true,
             playSound: true,
@@ -81,7 +82,8 @@ class NotificationService {
     );
   }
 
-  static Future<void> _handleNotificationOpenedApp(RemoteMessage message) async {
+  static Future<void> _handleNotificationOpenedApp(
+      RemoteMessage message) async {
     debugPrint('Notificação aberta: ${message.notification?.title}');
     // Aqui seria implementada a navegação para o chat
     // context.go('/chat/${message.data['conversationId']}');
@@ -129,8 +131,4 @@ class NotificationService {
   static Future<String?> getDeviceToken() async {
     return _firebaseMessaging.getToken();
   }
-}
-
-void debugPrint(String message) {
-  print('🔔 $message');
 }
