@@ -8,11 +8,15 @@ import 'core/shared/services/notification_service.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Inicializar Firebase
-  await Firebase.initializeApp();
-
-  // Inicializar serviço de notificações
-  await NotificationService.initialize();
+  // Inicializar Firebase (opcional)
+  try {
+    await Firebase.initializeApp();
+    // Inicializar serviço de notificações apenas se Firebase foi configurado
+    await NotificationService.initialize();
+  } catch (e) {
+    debugPrint('⚠️ Firebase não configurado: $e');
+    debugPrint('Execute: flutterfire configure');
+  }
 
   runApp(const ProviderScope(child: MyApp()));
 }
