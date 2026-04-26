@@ -128,6 +128,10 @@ test/
 
 ## Telas
 
+| Home | Detalhe | Chat |
+|---|---|---|
+| ![Home](docs/screenshots/home.png) | ![Detalhe](docs/screenshots/detail.png) | ![Chat](docs/screenshots/chat.png) |
+
 ### Home
 Listagem de propriedades em cards responsivos:
 - Imagem destacada com cache

@@ -11,13 +11,11 @@ class ImovelMockDatasource {
         preco: 1500000.0,
         midias: [
           const MidiaModel(
-            url:
-                'https://images.unsplash.com/photo-1512917774080-9564f0042222?w=500&h=500&fit=crop',
+            url: 'https://picsum.photos/seed/apt-copa1/800/600',
             tipo: MidiaTipo.foto,
           ),
           const MidiaModel(
-            url:
-                'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500&h=500&fit=crop',
+            url: 'https://picsum.photos/seed/apt-copa2/800/600',
             tipo: MidiaTipo.foto,
           ),
         ],
@@ -34,8 +32,7 @@ class ImovelMockDatasource {
         preco: 950000.0,
         midias: [
           const MidiaModel(
-            url:
-                'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500&h=500&fit=crop',
+            url: 'https://picsum.photos/seed/casa-vilam/800/600',
             tipo: MidiaTipo.foto,
           ),
         ],
@@ -52,13 +49,11 @@ class ImovelMockDatasource {
         preco: 2200000.0,
         midias: [
           const MidiaModel(
-            url:
-                'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500&h=500&fit=crop',
+            url: 'https://picsum.photos/seed/pent-pin1/800/600',
             tipo: MidiaTipo.foto,
           ),
           const MidiaModel(
-            url:
-                'https://images.unsplash.com/photo-1494145904049-0dca59b4bbad?w=500&h=500&fit=crop',
+            url: 'https://picsum.photos/seed/pent-pin2/800/600',
             tipo: MidiaTipo.foto,
           ),
         ],

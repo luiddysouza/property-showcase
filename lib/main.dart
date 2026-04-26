@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'core/design/app_colors.dart';
 import 'core/design/app_theme.dart';
 import 'core/routes/app_router.dart';
 import 'core/shared/services/notification_service.dart';
@@ -18,6 +20,15 @@ void main() async {
     debugPrint('Execute: flutterfire configure');
   }
 
+  // Status bar: fundo off-white, ícones escuros
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: AppColors.background,
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness: Brightness.light,
+    ),
+  );
+
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -30,6 +41,7 @@ class MyApp extends ConsumerWidget {
 
     return MaterialApp.router(
       title: 'Property Showcase',
+      debugShowCheckedModeBanner: false,
       theme: AppTheme.light(),
       routerConfig: router,
     );

@@ -5,7 +5,34 @@ import '../models/message_model.dart';
 /// A arquitetura é idêntica ao que seria com WebSocket real —
 /// só o datasource muda, nada acima precisa saber.
 class ChatMockDatasource {
-  final Map<String, List<MessageModel>> _mensagens = {};
+  final Map<String, List<MessageModel>> _mensagens = {
+    'imovel-1': [
+      MessageModel(
+        id: '1',
+        text: 'Olá! Tenho interesse nesse apartamento. Ainda está disponível?',
+        senderId: 'me',
+        sentAt: DateTime.now().subtract(const Duration(minutes: 10)),
+      ),
+      MessageModel(
+        id: '2',
+        text: 'Sim, está disponível! Posso agendar uma visita para você?',
+        senderId: 'proprietario',
+        sentAt: DateTime.now().subtract(const Duration(minutes: 9)),
+      ),
+      MessageModel(
+        id: '3',
+        text: 'Com certeza! Qual seria o melhor horário?',
+        senderId: 'me',
+        sentAt: DateTime.now().subtract(const Duration(minutes: 8)),
+      ),
+      MessageModel(
+        id: '4',
+        text: 'Temos disponibilidade amanhã às 10h ou depois de amanhã às 14h.',
+        senderId: 'proprietario',
+        sentAt: DateTime.now().subtract(const Duration(minutes: 7)),
+      ),
+    ],
+  };
   final Map<String, StreamController<List<MessageModel>>> _streamControllers =
       {};
 
@@ -20,8 +47,10 @@ class ChatMockDatasource {
       final controller = StreamController<List<MessageModel>>.broadcast();
       _streamControllers[conversationId] = controller;
 
-      // Emitir mensagens iniciais
-      controller.add(List.from(_mensagens[conversationId]!));
+      // Emitir após o subscriber se conectar
+      Future.microtask(
+        () => controller.add(List.from(_mensagens[conversationId]!)),
+      );
     }
 
     return _streamControllers[conversationId]!.stream;
