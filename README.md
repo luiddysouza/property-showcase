@@ -146,6 +146,7 @@ Visualizador interativo:
 - Informações completas (endereço, preço, descrição)
 - Indicador de páginas
 - Botão voltar com GoRouter
+- Botão flutuante (FAB) "Falar com o proprietário" → abre chat do imóvel
 
 ### Chat
 Conversa em tempo real (mock):
