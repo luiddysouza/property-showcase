@@ -74,133 +74,155 @@ class _ImovelDetailContentState extends State<_ImovelDetailContent> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // AppBar customizado
-          SizedBox(
-            height: 56,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
-              child: Row(
-                children: [
-                  GestureDetector(
-                    onTap: () => context.pop(),
-                    child: const Icon(Icons.arrow_back,
-                        color: AppColors.textPrimary),
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: AppColors.primary,
+        foregroundColor: AppColors.textOnPrimary,
+        onPressed: () => context.push('/chat/imovel-${widget.imovel.id}'),
+        icon: const Icon(Icons.chat_bubble_outline),
+        label: Text(
+          'Falar com o\nproprietário',
+          textAlign: TextAlign.center,
+          style: AppTypography.label.copyWith(
+            color: AppColors.textOnPrimary,
+            height: 1.2,
+          ),
+        ),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // AppBar customizado
+              SizedBox(
+                height: 56,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () => context.pop(),
+                        child: const Icon(Icons.arrow_back,
+                            color: AppColors.textPrimary),
+                      ),
+                      const Spacer(),
+                      Text(
+                        'Detalhes',
+                        style: AppTypography.heading2,
+                      ),
+                      const Spacer(),
+                      const SizedBox(width: 24),
+                    ],
                   ),
-                  const Spacer(),
-                  Text(
-                    'Detalhes',
-                    style: AppTypography.heading2,
+                ),
+              ),
+
+              // Carrossel de mídias
+              SizedBox(
+                height: 300,
+                child: PageView.builder(
+                  controller: _pageController,
+                  onPageChanged: (index) =>
+                      setState(() => _currentPage = index),
+                  itemCount: widget.imovel.midias.length,
+                  itemBuilder: (context, index) {
+                    final midia = widget.imovel.midias[index];
+                    return midia.tipo == MidiaTipo.foto
+                        ? _buildFotoPage(midia)
+                        : _buildVideoPage(midia);
+                  },
+                ),
+              ),
+
+              // Indicador de página
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                child: Center(
+                  child: Text(
+                    '${_currentPage + 1} / ${widget.imovel.midias.length}',
+                    style: AppTypography.label,
                   ),
-                  const Spacer(),
-                  const SizedBox(width: 24),
-                ],
+                ),
               ),
-            ),
-          ),
 
-          // Carrossel de mídias
-          SizedBox(
-            height: 300,
-            child: PageView.builder(
-              controller: _pageController,
-              onPageChanged: (index) => setState(() => _currentPage = index),
-              itemCount: widget.imovel.midias.length,
-              itemBuilder: (context, index) {
-                final midia = widget.imovel.midias[index];
-                return midia.tipo == MidiaTipo.foto
-                    ? _buildFotoPage(midia)
-                    : _buildVideoPage(midia);
-              },
-            ),
-          ),
-
-          // Indicador de página
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
-            child: Center(
-              child: Text(
-                '${_currentPage + 1} / ${widget.imovel.midias.length}',
-                style: AppTypography.label,
+              // Título
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+                child: Text(
+                  widget.imovel.titulo,
+                  style: AppTypography.heading1,
+                ),
               ),
-            ),
-          ),
+              const SizedBox(height: AppSpacing.sm),
 
-          // Título
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
-            child: Text(
-              widget.imovel.titulo,
-              style: AppTypography.heading1,
-            ),
-          ),
-          const SizedBox(height: AppSpacing.sm),
-
-          // Endereço
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
-            child: Text(
-              widget.imovel.endereco,
-              style: AppTypography.caption,
-            ),
-          ),
-          const SizedBox(height: AppSpacing.lg),
-
-          // Preço
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
-            child: Text(
-              'R\$ ${(widget.imovel.preco / 1000000).toStringAsFixed(2)}M',
-              style: AppTypography.heading2.copyWith(
-                color: AppColors.primary,
+              // Endereço
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+                child: Text(
+                  widget.imovel.endereco,
+                  style: AppTypography.caption,
+                ),
               ),
-            ),
-          ),
-          const SizedBox(height: AppSpacing.lg),
+              const SizedBox(height: AppSpacing.lg),
 
-          // Métricas
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _MetricItem(
-                  icon: Icons.king_bed,
-                  label: '${widget.imovel.quartos} Quartos',
+              // Preço
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+                child: Text(
+                  'R\$ ${(widget.imovel.preco / 1000000).toStringAsFixed(2)}M',
+                  style: AppTypography.heading2.copyWith(
+                    color: AppColors.primary,
+                  ),
                 ),
-                _MetricItem(
-                  icon: Icons.bathtub,
-                  label: '${widget.imovel.banheiros} Banheiros',
-                ),
-                _MetricItem(
-                  icon: Icons.square_foot,
-                  label: '${widget.imovel.areaM2.toStringAsFixed(0)} m²',
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: AppSpacing.lg),
+              ),
+              const SizedBox(height: AppSpacing.lg),
 
-          // Descrição
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Descrição', style: AppTypography.heading2),
-                const SizedBox(height: AppSpacing.md),
-                Text(
-                  widget.imovel.descricao,
-                  style: AppTypography.body,
+              // Métricas
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _MetricItem(
+                      icon: Icons.king_bed,
+                      label: '${widget.imovel.quartos} Quartos',
+                    ),
+                    _MetricItem(
+                      icon: Icons.bathtub,
+                      label: '${widget.imovel.banheiros} Banheiros',
+                    ),
+                    _MetricItem(
+                      icon: Icons.square_foot,
+                      label: '${widget.imovel.areaM2.toStringAsFixed(0)} m²',
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(height: AppSpacing.lg),
+
+              // Descrição
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Descrição', style: AppTypography.heading2),
+                    const SizedBox(height: AppSpacing.md),
+                    Text(
+                      widget.imovel.descricao,
+                      style: AppTypography.body,
+                    ),
+                  ],
+                ),
+              ),
+              // Espaço extra para o FAB não sobrepor o conteúdo
+              const SizedBox(height: 96),
+            ],
           ),
-          const SizedBox(height: AppSpacing.xxl),
-        ],
+        ),
       ),
     );
   }
